@@ -85,6 +85,13 @@ class RepuestoScraper(ScraperBase):
             zoom_link = soup.find("a", id="zoom01")
             if zoom_link and "href" in zoom_link.attrs:
                 imagen_url = self.PRODUCT_BASE_URL + zoom_link["href"]
+            else:
+                # Intento 2: Obtener thumbnail desde el noscript
+                noscript_tag = soup.find("noscript")
+                if noscript_tag:
+                    img_tag = noscript_tag.find("img")
+                    if img_tag and "src" in img_tag.attrs:
+                        imagen_url = self.PRODUCT_BASE_URL + img_tag["src"]
 
             return Repuesto(codigo, nombre, descripcion, marca, tipo, precio, stock=0, ubicacion="", imagen_path=imagen_url)
 
