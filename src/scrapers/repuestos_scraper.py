@@ -1,8 +1,12 @@
 import json
 import re
 import time
+
+
+from .equivalencia_scraper import EquivalenciaScraper
 from .scraper_base import ScraperBase
 from repuesto import Repuesto
+from equivalencia import Equivalencia
 
 
 class RepuestoScraper(ScraperBase):
@@ -92,8 +96,14 @@ class RepuestoScraper(ScraperBase):
                     img_tag = noscript_tag.find("img")
                     if img_tag and "src" in img_tag.attrs:
                         imagen_url = self.PRODUCT_BASE_URL + img_tag["src"]
+            
+            equivalencia_scraper = EquivalenciaScraper(soup)
+            equivalencias = equivalencia_scraper.get_equivalencias()
+            
+            repuesto = Repuesto(codigo, nombre, descripcion, marca, tipo, precio, stock=0, ubicacion="", imagen_path=imagen_url)
+            equivalencia = Equivalencia(codigo, equivalencias)
 
-            return Repuesto(codigo, nombre, descripcion, marca, tipo, precio, stock=0, ubicacion="", imagen_path=imagen_url)
+            return repuesto, equivalencia
 
         except AttributeError:
             print(f"⚠️ Error extrayendo datos de: {url}")
@@ -103,6 +113,7 @@ class RepuestoScraper(ScraperBase):
     def scrape_all(self, max_pages=3):
         """Scrapea múltiples páginas y guarda los datos en JSON."""
         all_repuestos = []
+        all_equivalencias = []
 
         for page in range(1, max_pages + 1):
             print(f"📄 Scrapeando página {page}...")
@@ -110,15 +121,20 @@ class RepuestoScraper(ScraperBase):
 
             for link in product_links:
                 print(f"🔍 Scrapeando producto: {link}")
-                repuesto = self.scrape_product(link)
+                repuesto, equivalencia = self.scrape_product(link)
                 if repuesto:
                     all_repuestos.append(repuesto.to_json())
-
+                if equivalencia:
+                    all_equivalencias.append(equivalencia.to_json())
                 time.sleep(1) 
         with open("repuestos.json", "w", encoding="utf-8") as f:
             json.dump(all_repuestos, f, indent=4, ensure_ascii=False)
+            
+        with open("equivalencias.json", "w", encoding="utf-8") as f:
+            json.dump(all_equivalencias, f, indent=4, ensure_ascii=False)
 
         print("✅ Datos guardados en 'repuestos.json'.")
+        print("✅ Datos guardados en 'equivalencias.json'.")
     
 
         
