@@ -10,5 +10,5 @@ class ScraperBase:
         if response.status_code == 200:
             return BeautifulSoup(response.text, "html.parser")
         else:
-            print(f"Error al obtener {url}: {response.status_code}")
+            print(f"❌ Error al obtener {url}: {response.status_code}")
             return None
