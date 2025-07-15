@@ -24,7 +24,7 @@
 
 9. Imprime el tiempo total transcurrido.
 ---
-##🚀 Cómo Funciona
+## 🚀 Cómo Funciona
 Este scraper está organizado como un proyecto gestionado con uv, por lo que la instalación y ejecución se realizan desde pyproject.toml usando las herramientas modernas que ofrece:
 
 1. Inicialización del proyecto
