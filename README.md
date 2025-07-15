@@ -27,24 +27,18 @@
 ## 🚀 Cómo Funciona
 Este scraper está organizado como un proyecto gestionado con uv, por lo que la instalación y ejecución se realizan desde pyproject.toml usando las herramientas modernas que ofrece:
 
-1. Inicialización del proyecto
-Con el repositorio clonado, ejecutá:
-```bash
-uv init
-```
-Esto crea un entorno virtual (.venv), el archivo pyproject.toml, uv.lock, el archivo .python-version y deja listo el proyecto para ejecutarse
-2. Agregar dependencias
+1. Agregar dependencias
 Instalá las librerías necesarias ejecutando:
 ```bash
 uv sync
 ```
-3. Sincronización y lockeo
+2. Sincronización y lockeo
 uv gestiona la resolución de todas las dependencias (directas e indirectas) y crea un archivo uv.lock que garantiza reproducibilidad.
 
 Cada vez que ejecutás un comando (como uv run main.py), uv sincroniza el entorno con las dependencias bloqueadas, asegurando que el entorno esté siempre actualizado 
 Heuristic Pedals
 
-4. Ejecución del scraper
+3. Ejecución del scraper
 Para ejecutar el scraping (dentro de la carpeta src), usás:
 ```bash
 uv run main.py
