@@ -25,7 +25,7 @@
 9. Imprime el tiempo total transcurrido.
 
 ## 📁 Estructura del proyecto
-├
+│
 ├── scrapers/
 │ ├── scraper_base.py
 │ ├── equivalencia_scraper.py
