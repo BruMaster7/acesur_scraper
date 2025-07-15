@@ -23,24 +23,6 @@
 8. Guarda los resultados en repuestos.json y equivalencias.json.
 
 9. Imprime el tiempo total transcurrido.
-
-## 📁 Estructura del proyecto
-│
-├── scrapers/
-│ ├── scraper_base.py
-│ ├── equivalencia_scraper.py
-│ └── repuestos_scraper.py
-├── repuesto.py
-├── equivalencia.py
-└── main.py
-
-```bash
-- **scraper_base.py**: lógica base para obtener contenido HTML.
-- **equivalencia_scraper.py**: extrae códigos equivalentes del HTML.
-- **repuestos_scraper.py**: recorre páginas, extrae detalles de productos y equivalencias, guarda resultados en JSON.
-- **repuesto.py** y **equivalencia.py**: modelos de datos con método `to_json()`.
-- **main.py**: script principal que ejecuta el scraping y muestra tiempo total de ejecución.
-```
 ---
 ##🚀 Cómo Funciona
 Este scraper está organizado como un proyecto gestionado con uv, por lo que la instalación y ejecución se realizan desde pyproject.toml usando las herramientas modernas que ofrece:
