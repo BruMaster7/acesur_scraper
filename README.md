@@ -38,8 +38,7 @@ uv gestiona la resolución de todas las dependencias (directas e indirectas) y c
 Cada vez que ejecutás un comando (como uv run main.py), uv sincroniza el entorno con las dependencias bloqueadas, asegurando que el entorno esté siempre actualizado 
 Heuristic Pedals
 
-3. Ejecución del scraper
-Para ejecutar el scraping (dentro de la carpeta src), usás:
+3. Para ejecutar el scraping (dentro de la carpeta src), usás:
 ```bash
 uv run main.py
 ```
@@ -55,7 +54,7 @@ uv run main.py
 ⏱️ Tiempo total de ejecución: 0:02:35
 ```
 Los archivos JSON resultantes contendrán estructuras como:
-Productos:
+Repuestos:
 ```json
 [
   {
