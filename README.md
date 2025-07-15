@@ -35,9 +35,6 @@ uv sync
 2. Sincronización y lockeo
 uv gestiona la resolución de todas las dependencias (directas e indirectas) y crea un archivo uv.lock que garantiza reproducibilidad.
 
-Cada vez que ejecutás un comando (como uv run main.py), uv sincroniza el entorno con las dependencias bloqueadas, asegurando que el entorno esté siempre actualizado 
-Heuristic Pedals
-
 3. Para ejecutar el scraping (dentro de la carpeta src), usás:
 ```bash
 uv run main.py
